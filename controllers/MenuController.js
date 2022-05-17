@@ -6,9 +6,10 @@ module.exports = class MenuController {
             {
                 type: "list",
                 name: "mainMenuChoice",
-                message: "Please choose from an option below: ",
+                message:"Please choose from an option below: ",
                 choices: [
                     "Add new contact",
+                    "Date",
                     "Exit"
                 ]
             }
@@ -25,6 +26,10 @@ module.exports = class MenuController {
                     break;
                 case "Exit":
                     this.exit();
+                    break;
+                case "Date":
+                    this.getDate(); 
+                    this.exit();   
                 default:
                     console.log("Invalid input");
                     this.main();        
@@ -48,6 +53,12 @@ module.exports = class MenuController {
     exit(){
         console.log("Thanks for using AddressBlock");
         process.exit();
+    }
+
+    getDate(){
+        const date = new Date();
+        const new_date = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+        console.log(new_date);
     }
 
 }
